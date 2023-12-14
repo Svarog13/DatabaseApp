@@ -34,7 +34,7 @@ namespace _3.Database
         }
 
         /// <summary>
-        /// Повертаємо список усіх кліжнтів
+        /// Повертаємо список усіх клієнтів
         /// </summary>
         public List<Client> GetList()
         {
@@ -125,6 +125,8 @@ namespace _3.Database
 
         public void GenerateRandom(int count)
         {
+            DateTime startTime = DateTime.Now;
+
             var faker = new Faker<Client>("uk")
                .RuleFor(u => u.FirstName, f => f.Name.FirstName())
                .RuleFor(u => u.LastName, f => f.Name.LastName())
@@ -149,6 +151,11 @@ namespace _3.Database
                 sqlCommand.CommandText = sql; //текст команди
                                               //виконати комнаду до сервера
                 sqlCommand.ExecuteNonQuery();
+
+                DateTime endTime = DateTime.Now;
+                TimeSpan executionTime = endTime - startTime;
+
+                Console.WriteLine($"Час генерації {count} клієнтів: {executionTime.TotalMilliseconds} мс");
             }
         }
     }
