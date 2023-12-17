@@ -14,7 +14,7 @@ namespace _3.Database
     public class CategoryManager : IManager<Category>
     { 
         private SqlConnection _conn;
-
+        public event InsertCountDelegate InsertCount;
         /// <summary>
         /// Підлкючення до конкретної бази даних на сервері
         /// </summary>

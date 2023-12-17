@@ -12,9 +12,10 @@ namespace _3.Database
         {
             Console.InputEncoding = Encoding.Unicode;
             Console.OutputEncoding = Encoding.Unicode;
-            
+
             DatabaseManager databaseManager = new DatabaseManager();
             int action = 0;
+           
             do
             {
                 Console.WriteLine("Оберіть операцію:");
@@ -49,9 +50,14 @@ namespace _3.Database
                             break;
                         }
                 }
-            } while (action!=0);
-
+            } while (action != 0);
+           
             databaseManager.Dispose();
+           
+        }
+        private static void ClientManager_RecordAdded(int recordNumber)
+        {
+            Console.WriteLine($"Added a new record with number {recordNumber}");
         }
         /// <summary>
         /// Робота із таблицями
@@ -130,6 +136,7 @@ namespace _3.Database
 
         private static void workingManager<T>(string title, IManager<T> manager)
         {
+            manager.InsertCount += Manager_InsertCount;
             int action = 0;
             do
             {
@@ -194,13 +201,21 @@ namespace _3.Database
                             Console.WriteLine("Вкажіть кількість:");
                             int n = int.Parse(Console.ReadLine());
                             manager.GenerateRandom(n);
-                            Console.WriteLine("-----Запис успішно згенеровані-----");
+                            Console.WriteLine("-----Запис успішно згенеровані-----");                         
                             break;
                         }
                 }
 
             } while (action != 0);
             manager.Dispose();
+        }
+
+        private static void Manager_InsertCount(int count)
+        {
+            var defaltColout = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"-----Додано {count}------");
+            Console.ForegroundColor= defaltColout;
         }
     }
 }

@@ -11,6 +11,7 @@ namespace _3.Database
     public class ProfessionManager : IManager<Profession>
     {
         private SqlConnection _conn;
+        public event InsertCountDelegate InsertCount;
         /// <summary>
         /// Підлкючення до конкретної бази даних на сервері
         /// </summary>

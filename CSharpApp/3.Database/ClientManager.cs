@@ -1,18 +1,24 @@
-﻿using _3.Database.Entities;
+﻿using _3.Database;
+using _3.Database.Entities;
 using _3.Database.Interfaces;
 using Bogus;
 using Microsoft.Extensions.Configuration;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace _3.Database
 {
+    public delegate void RecordAddedEventHandler(int recordNumber);
     /// <summary>
     /// Керування таблицею і даними по клієнтів
     /// </summary>
-    public class ClientManager: IManager<Client>
+    public class ClientManager : IManager<Client>
     {
+
         private SqlConnection _conn;
         private readonly IManager<Profession> _proffesionManager;
+        public event InsertCountDelegate InsertCount;
+
         /// <summary>
         /// Підлкючення до конкретної бази даних на сервері
         /// </summary>
@@ -101,8 +107,13 @@ namespace _3.Database
             sqlCommand.CommandText = sql; //текст команди
             //виконати комнаду до сервера
             sqlCommand.ExecuteNonQuery();
-        }
 
+            int count = 0;          
+        }
+        private void ClientRecordAddedHandler(int recordNumber)
+        {
+            Console.WriteLine($"Додано новий запис з номером {recordNumber}");
+        }
         public void Dispose()
         {
             _conn.Close();
@@ -156,7 +167,10 @@ namespace _3.Database
                 TimeSpan executionTime = endTime - startTime;
 
                 Console.WriteLine($"Час генерації {count} клієнтів: {executionTime.TotalMilliseconds} мс");
+                InsertCount(i + 1);
             }
         }
     }
 }
+
+

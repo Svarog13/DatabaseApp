@@ -12,6 +12,7 @@ namespace _3.Database
     {
         private readonly CategoryManager _categoryManager;
         private SqlConnection _conn;
+        public event InsertCountDelegate InsertCount;
         public ProductManager(string nameDatabase)
         {
             var builder = new ConfigurationBuilder()
