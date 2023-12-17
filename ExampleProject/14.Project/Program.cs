@@ -1,3 +1,5 @@
+using _14.Project.Options;
+
 namespace _14.Project
 {
     internal static class Program
@@ -11,7 +13,7 @@ namespace _14.Project
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new MainForm());
+            Application.Run(new ConnectionForm());
         }
     }
 }
