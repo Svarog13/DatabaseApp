@@ -67,6 +67,7 @@
             btnSave.TabIndex = 2;
             btnSave.Text = "Зберегти";
             btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += btnSave_Click;
             // 
             // btnCencel
             // 

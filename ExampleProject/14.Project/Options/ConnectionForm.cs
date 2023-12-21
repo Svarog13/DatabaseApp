@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
+using System.Runtime.InteropServices;
+using System.Xml;
+using Newtonsoft.Json;
+
 
 namespace _14.Project.Options
 {
@@ -67,6 +71,39 @@ namespace _14.Project.Options
         private void txtUserPassword_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string host = txtServerHost.Text;
+                string userName = txtUserName.Text;
+                string password = txtUserPasssword.Text;
+
+                var buider = new ConfigurationBuilder()
+                    .SetBasePath(Directory.GetCurrentDirectory())
+                    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+
+                var config = new ConfigurationBuilder()
+                    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                    .Build();
+
+                var connectionString = $"Data Source={host};User ID={userName};Password={password};MultipleActiveResultSets=true;";
+
+                config["ConnectionStrings:host"] = host;
+                config["ConnectionStrings:user"] = userName;
+                config["ConnectionStrings:password"] = password;
+
+                File.WriteAllText("appsettings.json", JsonConvert.SerializeObject(config, Newtonsoft.Json.Formatting.Indented));
+
+                MessageBox.Show("Зміни збережено успішно.");
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Помилка при збереженні змін: {ex.Message}");
+            }
         }
     }
 }
