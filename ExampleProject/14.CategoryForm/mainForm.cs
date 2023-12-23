@@ -1,7 +1,7 @@
-using System;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Windows.Forms;
+using System.Xml;
+using Newtonsoft.Json;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
 
 namespace _14.CategoryForm
 {
@@ -26,37 +26,8 @@ namespace _14.CategoryForm
             categoryName = txtName.Text;
             categoryDescription = txtDescription.Text;
             categoryImage = txtImage.Text;
-            string conStr = "Data Source=20.65.144.204;User ID=kaban;Password=9[nV`e7VN`0%;MultipleActiveResultSets=true;";
 
-            try
-            {
-                using (var con = new SqlConnection(conStr))
-                {
-                    con.Open();
-                    Category c = new Category();
-                    string sql = "INSERT INTO tblCategories " +
-                                 "(Name, Description, [Image], CreatedDate) " +
-                                 "VALUES(@Name, @Description, @Image, @CreatedDate);";
-
-                    using (SqlCommand sqlCommand = new SqlCommand(sql, con))
-                    {
-                        sqlCommand.Parameters.AddWithValue("@Name", categoryName);
-                        sqlCommand.Parameters.AddWithValue("@Description", categoryDescription);
-                        // Assuming txtImage.Text contains the path to the image file
-                        string imageName = ImageWorker.ImageSave(categoryImage);
-                        sqlCommand.Parameters.AddWithValue("@Image", imageName);
-                        sqlCommand.Parameters.AddWithValue("@CreatedDate", DateTime.Now);
-
-                        sqlCommand.ExecuteNonQuery();
-                    }
-
-                    MessageBox.Show("Завантаження успішне!");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Помилка створення!");
-            }
+            SaveCategoryToJson();
         }
 
         private void btnCencel_Click(object sender, EventArgs e)
@@ -64,10 +35,53 @@ namespace _14.CategoryForm
             this.Close();
         }
 
-        private void CreateCategory()
+        private void SaveCategoryToJson()
         {
-            MessageBox.Show($"Створено нову категорію:\nНазва: {categoryName}\nОпис: {categoryDescription}\nЗображення: {categoryImage}",
-                            "Створення категорії", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                List<string> messages = LoadMessagesFromJson();
+
+                string newMessage = $"Назва: {categoryName}, Опис: {categoryDescription}, Зображення: {categoryImage}, Дата: {DateTime.Now}";
+                messages.Add(newMessage);
+
+                var data = new
+                {
+                    Name = categoryName,
+                    Description = categoryDescription,
+                    Image = categoryImage,
+                    CreatedDate = DateTime.Now
+                };
+
+                string json = JsonConvert.SerializeObject(data, Newtonsoft.Json.Formatting.Indented);
+
+                File.WriteAllText("appjson.json", json);
+
+                MessageBox.Show("Завантаження успішне!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Помилка створення!");
+            }
+        }
+
+        private List<string> LoadMessagesFromJson()
+        {
+            List<string> messages = new List<string>();
+
+            try
+            {
+                if (File.Exists("appjson.json"))
+                {
+                    string json = File.ReadAllText("appjson.json");
+                    messages = JsonConvert.DeserializeObject<List<string>>(json);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Помилка завантаження даних!");
+            }
+
+            return messages;
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)
