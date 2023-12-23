@@ -27,7 +27,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "11.DeletageEvent", "11.Dele
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "12.Events", "12.Events\12.Events.csproj", "{82A4387E-11C3-42E6-8CF9-932FDD4C3F1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "13.SimpleForm", "14.Project\13.SimpleForm.csproj", "{94BFB0B4-3D1E-48F1-AA94-2E1B6D4616DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "13.SimpleForm", "14.Project\13.SimpleForm.csproj", "{94BFB0B4-3D1E-48F1-AA94-2E1B6D4616DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "14.CategoryForm", "14.CategoryForm\14.CategoryForm.csproj", "{72651DC3-9994-4398-B070-70DC52B947BA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +89,10 @@ Global
 		{94BFB0B4-3D1E-48F1-AA94-2E1B6D4616DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94BFB0B4-3D1E-48F1-AA94-2E1B6D4616DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94BFB0B4-3D1E-48F1-AA94-2E1B6D4616DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72651DC3-9994-4398-B070-70DC52B947BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72651DC3-9994-4398-B070-70DC52B947BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72651DC3-9994-4398-B070-70DC52B947BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72651DC3-9994-4398-B070-70DC52B947BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
