@@ -28,79 +28,108 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnBrowseName = new Button();
-            btnBrowseDiscription = new Button();
-            btnBrowseImage = new Button();
+            btnCencel = new Button();
+            btnCreateCategory = new Button();
             txtName = new TextBox();
-            txtDiscription = new TextBox();
+            txtDescription = new TextBox();
             txtImage = new TextBox();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
             SuspendLayout();
             // 
-            // btnBrowseName
+            // btnCencel
             // 
-            btnBrowseName.ForeColor = Color.Blue;
-            btnBrowseName.Location = new Point(621, 58);
-            btnBrowseName.Name = "btnBrowseName";
-            btnBrowseName.Size = new Size(119, 23);
-            btnBrowseName.TabIndex = 0;
-            btnBrowseName.Text = "Browse Name";
-            btnBrowseName.UseVisualStyleBackColor = true;
-            btnBrowseName.Click += btnBrowseName_Click;
+            btnCencel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            btnCencel.ForeColor = Color.Red;
+            btnCencel.Location = new Point(608, 263);
+            btnCencel.Name = "btnCencel";
+            btnCencel.Size = new Size(167, 34);
+            btnCencel.TabIndex = 0;
+            btnCencel.Text = "Відмінити";
+            btnCencel.UseVisualStyleBackColor = true;
+            btnCencel.Click += btnCencel_Click;
             // 
-            // btnBrowseDiscription
+            // btnCreateCategory
             // 
-            btnBrowseDiscription.ForeColor = Color.Blue;
-            btnBrowseDiscription.Location = new Point(621, 108);
-            btnBrowseDiscription.Name = "btnBrowseDiscription";
-            btnBrowseDiscription.Size = new Size(119, 23);
-            btnBrowseDiscription.TabIndex = 1;
-            btnBrowseDiscription.Text = "Browse Discription";
-            btnBrowseDiscription.UseVisualStyleBackColor = true;
-            btnBrowseDiscription.Click += btnBrowseDiscription_Click;
-            // 
-            // btnBrowseImage
-            // 
-            btnBrowseImage.ForeColor = Color.Blue;
-            btnBrowseImage.Location = new Point(621, 160);
-            btnBrowseImage.Name = "btnBrowseImage";
-            btnBrowseImage.Size = new Size(119, 23);
-            btnBrowseImage.TabIndex = 2;
-            btnBrowseImage.Text = "Browse Image";
-            btnBrowseImage.UseVisualStyleBackColor = true;
-            btnBrowseImage.Click += btnBrowseImage_Click;
+            btnCreateCategory.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            btnCreateCategory.ForeColor = Color.Blue;
+            btnCreateCategory.Location = new Point(30, 263);
+            btnCreateCategory.Name = "btnCreateCategory";
+            btnCreateCategory.Size = new Size(167, 35);
+            btnCreateCategory.TabIndex = 1;
+            btnCreateCategory.Text = "Створити";
+            btnCreateCategory.UseVisualStyleBackColor = true;
+            btnCreateCategory.Click += btnCreateCategory_Click;
             // 
             // txtName
             // 
-            txtName.Location = new Point(30, 58);
+            txtName.Location = new Point(30, 46);
             txtName.Name = "txtName";
             txtName.Size = new Size(570, 23);
             txtName.TabIndex = 3;
+            txtName.TextChanged += txtName_TextChanged;
             // 
-            // txtDiscription
+            // txtDescription
             // 
-            txtDiscription.Location = new Point(30, 109);
-            txtDiscription.Name = "txtDiscription";
-            txtDiscription.Size = new Size(570, 23);
-            txtDiscription.TabIndex = 4;
+            txtDescription.Location = new Point(30, 120);
+            txtDescription.Name = "txtDescription";
+            txtDescription.Size = new Size(570, 23);
+            txtDescription.TabIndex = 4;
             // 
             // txtImage
             // 
-            txtImage.Location = new Point(30, 160);
+            txtImage.Location = new Point(30, 205);
             txtImage.Name = "txtImage";
             txtImage.Size = new Size(570, 23);
             txtImage.TabIndex = 5;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            label1.ForeColor = Color.Green;
+            label1.Location = new Point(30, 22);
+            label1.Name = "label1";
+            label1.Size = new Size(148, 21);
+            label1.TabIndex = 6;
+            label1.Text = "Завантажити ім'я";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            label2.ForeColor = Color.Green;
+            label2.Location = new Point(30, 96);
+            label2.Name = "label2";
+            label2.Size = new Size(165, 21);
+            label2.TabIndex = 7;
+            label2.Text = "Завантажити допис";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            label3.ForeColor = Color.Green;
+            label3.Location = new Point(30, 181);
+            label3.Name = "label3";
+            label3.Size = new Size(216, 21);
+            label3.TabIndex = 8;
+            label3.Text = "Завантажити зображення";
             // 
             // mainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
             Controls.Add(txtImage);
-            Controls.Add(txtDiscription);
+            Controls.Add(txtDescription);
             Controls.Add(txtName);
-            Controls.Add(btnBrowseImage);
-            Controls.Add(btnBrowseDiscription);
-            Controls.Add(btnBrowseName);
+            Controls.Add(btnCreateCategory);
+            Controls.Add(btnCencel);
             Name = "mainForm";
             Text = "Категорія";
             Load += Form1_Load;
@@ -109,11 +138,13 @@
         }
 
         #endregion
-        private Button btnBrowseDiscription;
-        private Button btnBrowseImage;
-        private Button btnBrowseName;
+        private Button btnCreateCategory;
+        private Button btnCencel;
         private TextBox txtName;
-        private TextBox txtDiscription;
+        private TextBox txtDescription;
         private TextBox txtImage;
+        private Label label1;
+        private Label label2;
+        private Label label3;
     }
 }
