@@ -38,6 +38,8 @@
             dgvDatabases = new DataGridView();
             ColName = new DataGridViewTextBoxColumn();
             btnDatabaseDelete = new Button();
+            btnDatabaseAdd = new Button();
+            btnChangeName = new Button();
             menuHead.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvDatabases).BeginInit();
             SuspendLayout();
@@ -86,7 +88,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.Blue;
-            label1.Location = new Point(224, 44);
+            label1.Location = new Point(234, 53);
             label1.Name = "label1";
             label1.Size = new Size(259, 25);
             label1.TabIndex = 3;
@@ -118,25 +120,52 @@
             // 
             // btnDatabaseDelete
             // 
-            btnDatabaseDelete.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btnDatabaseDelete.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnDatabaseDelete.ForeColor = Color.Red;
-            btnDatabaseDelete.Location = new Point(598, 301);
+            btnDatabaseDelete.Location = new Point(580, 301);
             btnDatabaseDelete.Name = "btnDatabaseDelete";
-            btnDatabaseDelete.Size = new Size(90, 31);
+            btnDatabaseDelete.Size = new Size(108, 31);
             btnDatabaseDelete.TabIndex = 5;
             btnDatabaseDelete.Text = "Видалити";
             btnDatabaseDelete.UseVisualStyleBackColor = true;
             btnDatabaseDelete.Click += btnDatabaseDelete_Click;
+            // 
+            // btnDatabaseAdd
+            // 
+            btnDatabaseAdd.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnDatabaseAdd.ForeColor = Color.Green;
+            btnDatabaseAdd.Location = new Point(12, 301);
+            btnDatabaseAdd.Name = "btnDatabaseAdd";
+            btnDatabaseAdd.Size = new Size(193, 31);
+            btnDatabaseAdd.TabIndex = 6;
+            btnDatabaseAdd.Text = "Додати базу данних";
+            btnDatabaseAdd.UseVisualStyleBackColor = true;
+            btnDatabaseAdd.Click += btnDatabaseAdd_Click;
+            // 
+            // btnChangeName
+            // 
+            btnChangeName.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnChangeName.ForeColor = Color.BlueViolet;
+            btnChangeName.Location = new Point(295, 301);
+            btnChangeName.Name = "btnChangeName";
+            btnChangeName.Size = new Size(169, 31);
+            btnChangeName.TabIndex = 7;
+            btnChangeName.Text = "Змінити ім'я бази";
+            btnChangeName.UseVisualStyleBackColor = true;
+            btnChangeName.Click += btnChangeName_Click;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(700, 338);
+            Controls.Add(btnChangeName);
+            Controls.Add(btnDatabaseAdd);
             Controls.Add(btnDatabaseDelete);
             Controls.Add(dgvDatabases);
             Controls.Add(label1);
             Controls.Add(menuHead);
+            ForeColor = Color.Blue;
             MainMenuStrip = menuHead;
             Margin = new Padding(3, 2, 3, 2);
             Name = "MainForm";
@@ -159,5 +188,7 @@
         private DataGridView dgvDatabases;
         private DataGridViewTextBoxColumn ColName;
         private Button btnDatabaseDelete;
+        private Button btnDatabaseAdd;
+        private Button btnChangeName;
     }
 }

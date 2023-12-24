@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Security.Cryptography.X509Certificates;
 
 public class DatabaseManager
@@ -76,6 +77,24 @@ public class DatabaseManager
         return false;
     }
 
+    public void CreateDatabase()
+    {
+        Console.WriteLine("Вкажіть назву бази даних:");
+        string dbName = Console.ReadLine();
+
+        var isEsixt = IsExistDatabase(dbName);
+        if (isEsixt)
+        {
+            Console.WriteLine("База даних {0} уже існує", dbName) ;
+            return;
+        }
+        
+        string sql = $"CREATE DATABASE {dbName};";
+        SqlCommand sqlCommand = _con.CreateCommand(); 
+        sqlCommand.CommandText = sql; 
+        sqlCommand.ExecuteNonQuery();
+        Console.WriteLine("Успішно створено БД :)");
+    }
     public void DeleteDatabase(string databaseName)
     {
         var isEsixt = IsExistDatabase(databaseName);
@@ -89,5 +108,50 @@ public class DatabaseManager
         sqlCommand.CommandText = sql; //текст команди
                                       //виконати комнаду до сервера
         sqlCommand.ExecuteNonQuery();
+    }
+    public void RenameDatabase(string databaseName)
+    {
+        var isExist = IsExistDatabase(databaseName);
+
+        if (!isExist)
+        {
+            MessageBox.Show($"Database '{databaseName}' does not exist.");
+            return;
+        }
+
+        string newName = PromptForNewName(databaseName);
+
+        if (string.IsNullOrEmpty(newName))
+        {        
+            return;
+        }
+
+        var isNewNameExist = IsExistDatabase(newName);
+
+        if (isNewNameExist)
+        {
+            MessageBox.Show($"Database with the new name '{newName}' already exists.");
+            return;
+        }
+
+        string sql = $"ALTER DATABASE {databaseName} MODIFY NAME = {newName};";
+        SqlCommand sqlCommand = _con.CreateCommand();
+
+        try
+        {
+            sqlCommand.CommandText = sql;
+            sqlCommand.ExecuteNonQuery();
+            MessageBox.Show($"Database '{databaseName}' has been renamed to '{newName}'.");
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"Error renaming database: {ex.Message}");
+        }
+    }
+
+    private string PromptForNewName(string currentName)
+    {        
+        string newName = Microsoft.VisualBasic.Interaction.InputBox($"Enter a new name for the database '{currentName}':", "Rename Database", "");
+        return newName;
     }
 }

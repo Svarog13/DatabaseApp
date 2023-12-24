@@ -1,4 +1,6 @@
 using _13.SimleForm.Options;
+using System.Data.SqlClient;
+using System.Drawing;
 
 namespace _13.SimleForm
 {
@@ -55,6 +57,21 @@ namespace _13.SimleForm
         private void dgvDatabases_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnDatabaseAdd_Click(object sender, EventArgs e)
+        {
+            DatabaseManager databaseManager = new DatabaseManager();
+            databaseManager.CreateDatabase();
+        }
+
+        private void btnChangeName_Click(object sender, EventArgs e)
+        {
+            int index = dgvDatabases.CurrentCell.RowIndex;
+            string name = (string)dgvDatabases.Rows[index].Cells[0].Value;
+            DatabaseManager databaseManager = new DatabaseManager();
+            databaseManager.RenameDatabase(name);
+            LoadListDatabase();
         }
     }
 }
