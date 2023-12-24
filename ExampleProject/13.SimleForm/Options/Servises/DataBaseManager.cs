@@ -85,13 +85,13 @@ public class DatabaseManager
         var isEsixt = IsExistDatabase(dbName);
         if (isEsixt)
         {
-            Console.WriteLine("База даних {0} уже існує", dbName) ;
+            Console.WriteLine("База даних {0} уже існує", dbName);
             return;
         }
-        
+
         string sql = $"CREATE DATABASE {dbName};";
-        SqlCommand sqlCommand = _con.CreateCommand(); 
-        sqlCommand.CommandText = sql; 
+        SqlCommand sqlCommand = _con.CreateCommand();
+        sqlCommand.CommandText = sql;
         sqlCommand.ExecuteNonQuery();
         Console.WriteLine("Успішно створено БД :)");
     }
