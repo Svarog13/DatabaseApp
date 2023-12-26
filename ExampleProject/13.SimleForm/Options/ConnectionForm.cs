@@ -62,10 +62,5 @@ namespace _13.SimleForm.Options
         {
             this.Close();
         }
-
-        private void ConnectionForm_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

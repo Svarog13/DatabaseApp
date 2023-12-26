@@ -46,7 +46,7 @@
             label1.ForeColor = Color.Blue;
             label1.Location = new Point(22, 18);
             label1.Name = "label1";
-            label1.Size = new Size(67, 21);
+            label1.Size = new Size(82, 28);
             label1.TabIndex = 0;
             label1.Text = "Сервер";
             // 
@@ -54,7 +54,7 @@
             // 
             txtServerHost.Location = new Point(22, 45);
             txtServerHost.Name = "txtServerHost";
-            txtServerHost.Size = new Size(285, 29);
+            txtServerHost.Size = new Size(285, 34);
             txtServerHost.TabIndex = 1;
             // 
             // btnSave
@@ -86,7 +86,7 @@
             label2.ForeColor = Color.Blue;
             label2.Location = new Point(22, 80);
             label2.Name = "label2";
-            label2.Size = new Size(102, 21);
+            label2.Size = new Size(127, 28);
             label2.TabIndex = 0;
             label2.Text = "Користувач";
             // 
@@ -94,14 +94,14 @@
             // 
             txtUserName.Location = new Point(22, 107);
             txtUserName.Name = "txtUserName";
-            txtUserName.Size = new Size(285, 29);
+            txtUserName.Size = new Size(285, 34);
             txtUserName.TabIndex = 1;
             // 
             // txtUserPasssword
             // 
             txtUserPasssword.Location = new Point(22, 173);
             txtUserPasssword.Name = "txtUserPasssword";
-            txtUserPasssword.Size = new Size(285, 29);
+            txtUserPasssword.Size = new Size(285, 34);
             txtUserPasssword.TabIndex = 5;
             // 
             // label3
@@ -111,7 +111,7 @@
             label3.ForeColor = Color.Blue;
             label3.Location = new Point(22, 146);
             label3.Name = "label3";
-            label3.Size = new Size(70, 21);
+            label3.Size = new Size(85, 28);
             label3.TabIndex = 4;
             label3.Text = "Пароль";
             // 
@@ -128,7 +128,7 @@
             // 
             // ConnectionForm
             // 
-            AutoScaleDimensions = new SizeF(9F, 21F);
+            AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(468, 282);
             Controls.Add(txtUserPasssword);
@@ -145,7 +145,6 @@
             Name = "ConnectionForm";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Підключення до сервера";
-            Load += ConnectionForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }

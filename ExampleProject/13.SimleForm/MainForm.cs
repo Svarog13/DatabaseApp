@@ -1,6 +1,6 @@
 using _13.SimleForm.Options;
-using System.Data.SqlClient;
-using System.Drawing;
+using _13.SimleForm.Services;
+using System.Xml.Linq;
 
 namespace _13.SimleForm
 {
@@ -9,6 +9,7 @@ namespace _13.SimleForm
         public MainForm()
         {
             InitializeComponent();
+            LoadListDatabase();
         }
 
         private void fileExit_Click(object sender, EventArgs e)
@@ -22,14 +23,9 @@ namespace _13.SimleForm
             connectionForm.ShowDialog();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void MainForm_Load(object sender, EventArgs e)
         {
-            LoadListDatabase();
+           LoadListDatabase();
         }
 
         private void LoadListDatabase()
@@ -44,34 +40,40 @@ namespace _13.SimleForm
             }
         }
 
-        private void btnDatabaseDelete_Click(object sender, EventArgs e)
+        private void btnDeleteDatabase_Click_1(object sender, EventArgs e)
         {
             int index = dgvDatabases.CurrentCell.RowIndex;
             string name = (string)dgvDatabases.Rows[index].Cells[0].Value;
             DatabaseManager databaseManager = new DatabaseManager();
             databaseManager.DeleteDatabase(name);
-            //MessageBox.Show("Row index", index.ToString());
+            //MessageBox.Show("Row index", name);
             LoadListDatabase();
         }
 
-        private void dgvDatabases_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void btnDatabaseCreation_Click(object sender, EventArgs e)
         {
-
+            DatabaseCreationForm databaseCreationForm = new DatabaseCreationForm();
+            databaseCreationForm.ShowDialog();
+            LoadListDatabase();
         }
 
-        private void btnDatabaseAdd_Click(object sender, EventArgs e)
+        private void btnRanameDatabase_Click(object sender, EventArgs e)
         {
-            DatabaseManager databaseManager = new DatabaseManager();
-            databaseManager.CreateDatabase();
-        }
 
-        private void btnChangeName_Click(object sender, EventArgs e)
-        {
             int index = dgvDatabases.CurrentCell.RowIndex;
             string name = (string)dgvDatabases.Rows[index].Cells[0].Value;
-            DatabaseManager databaseManager = new DatabaseManager();
-            databaseManager.RenameDatabase(name);
-            LoadListDatabase();
+            if (txtNewName.Text.Length > 0)
+            {
+                DatabaseManager databaseManager = new DatabaseManager();
+                databaseManager.RenameDatabase(name, txtNewName.Text);
+                LoadListDatabase();
+            }
+            else
+            {
+                MessageBox.Show("Ви не ввели нове ім'я!");
+            }
+            
+
         }
     }
 }
