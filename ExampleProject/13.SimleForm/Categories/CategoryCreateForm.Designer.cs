@@ -40,7 +40,7 @@ namespace _13.SimleForm.Categories
             label1 = new Label();
             txtName = new TextBox();
             label2 = new Label();
-            textDescription = new TextBox();
+            txtDescription = new TextBox();
             label3 = new Label();
             pbImage = new PictureBox();
             btnCreateCategory = new Button();
@@ -78,14 +78,14 @@ namespace _13.SimleForm.Categories
             label2.TabIndex = 5;
             label2.Text = "Назва";
             // 
-            // textDescription
+            // txtDescription
             // 
-            textDescription.Location = new Point(12, 162);
-            textDescription.Multiline = true;
-            textDescription.Name = "textDescription";
-            textDescription.Size = new Size(380, 207);
-            textDescription.TabIndex = 8;
-            textDescription.TextChanged += textDescription_TextChanged;
+            txtDescription.Location = new Point(12, 162);
+            txtDescription.Multiline = true;
+            txtDescription.Name = "txtDescription";
+            txtDescription.Size = new Size(380, 207);
+            txtDescription.TabIndex = 8;
+            txtDescription.TextChanged += textDescription_TextChanged;
             // 
             // label3
             // 
@@ -139,7 +139,7 @@ namespace _13.SimleForm.Categories
             Controls.Add(btnCencel);
             Controls.Add(btnCreateCategory);
             Controls.Add(pbImage);
-            Controls.Add(textDescription);
+            Controls.Add(txtDescription);
             Controls.Add(label3);
             Controls.Add(txtName);
             Controls.Add(label2);
@@ -157,7 +157,7 @@ namespace _13.SimleForm.Categories
         private Label label1;
         private TextBox txtName;
         private Label label2;
-        private TextBox textDescription;
+        private TextBox txtDescription;
         private Label label3;
         private PictureBox pbImage;
         private Button btnCreateCategory;

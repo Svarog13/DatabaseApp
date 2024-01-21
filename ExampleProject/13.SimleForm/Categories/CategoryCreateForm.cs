@@ -28,7 +28,7 @@ namespace _13.SimleForm.Categories
 
         private void btnCreateCategory_Click(object sender, EventArgs e)
         {
-            categoryManager.Insert(txtName.Text, textDescription.Text);
+            categoryManager.Insert(txtName.Text, txtDescription.Text);
 
             MessageBox.Show("Категорію успішно створено!");
             Dispose();

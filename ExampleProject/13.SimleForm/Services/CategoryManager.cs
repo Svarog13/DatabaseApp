@@ -40,13 +40,11 @@ namespace _13.SimleForm.Services
                 MessageBox.Show("Помилка підключення!!! " + ex.Message);
             }
         }
-        public void Insert()
+        public void Insert(string name, string description)
         {
             Category c = new Category();
-            Console.WriteLine("Вкажіть назву категорії:");
-            c.Name = Console.ReadLine();
-            Console.WriteLine("Вкажіть опис категорії:");
-            c.Description = Console.ReadLine();
+            c.Name = name;
+            c.Description = description;
             //Console.WriteLine("Вкажіть фото url:");
             //c.Image = Console.ReadLine();
             //var date = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
