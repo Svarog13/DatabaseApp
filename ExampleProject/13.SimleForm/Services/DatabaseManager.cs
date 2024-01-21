@@ -94,22 +94,22 @@ namespace _13.SimleForm.Services
             sqlCommand.ExecuteNonQuery();
         }
 
-        public void CreateDatabase(string dbName)
+        public void CreateDatabase(string databaseName)
         {
-            var isEsixt = IsExistDatabase(dbName);
+            var isEsixt = IsExistDatabase(databaseName);
             if (isEsixt)
             {
-                MessageBox.Show("База даних з таки ім'ям уже існує!");
+                MessageBox.Show("База даних не існує" + databaseName);
                 return;
             }
-            string sql = $"CREATE DATABASE {dbName};";
+            //створення на сервері бази даних
+            //string sql = "CREATE DATABASE "+dbName+";";
+            string sql = $"CREATE DATABASE {databaseName};";
             SqlCommand sqlCommand = _con.CreateCommand(); //окманди виконуєються на основі підлкючення
             sqlCommand.CommandText = sql; //текст команди
-            //виконати комнаду до сервера
+                                          //виконати комнаду до сервера
             sqlCommand.ExecuteNonQuery();
-            MessageBox.Show("Базу даних успішно створено!");
         }
-
         public void RenameDatabase(string databaseName, string NewDatabaseName)
         {
             if (IsExistDatabase(databaseName))

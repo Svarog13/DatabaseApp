@@ -22,8 +22,13 @@ namespace _13.SimleForm
 
         private void btnCreateDatabase_Click(object sender, EventArgs e)
         {
-            DatabaseManager databaseManager = new DatabaseManager(); 
+            DatabaseManager databaseManager = new DatabaseManager();
             databaseManager.CreateDatabase(txtDatabaseName.Text);
+        }
+
+        private void DatabaseCreationForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 
